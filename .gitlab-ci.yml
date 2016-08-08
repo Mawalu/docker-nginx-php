@@ -1,5 +1,6 @@
 stages:
   - build
+  - test
   - release
 
 variables: 
@@ -14,6 +15,14 @@ build:
   script:
     - docker build --pull -t $CONTAINER_TEST_IMAGE .
     - docker push $CONTAINER_TEST_IMAGE
+
+test-nginx:
+  stage: test
+  script:
+    - CONTAINER=$(docker run -d $CONTAINER_TEST_IMAGE)
+    - sleep 5
+    - curl localhost:80
+    - docker rm -f $CONTAINER
 
 release-image:
   stage: release
