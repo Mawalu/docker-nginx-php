@@ -21,7 +21,7 @@ test-nginx:
   script:
     - CONTAINER=$(docker run -d $CONTAINER_TEST_IMAGE)
     - sleep 5
-    - curl localhost:80
+    - docker exec $CONTAINER /usr/bin/curl localhost
     - docker rm -f $CONTAINER
 
 release-image:
