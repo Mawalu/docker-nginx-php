@@ -1,4 +1,4 @@
-FROM docker.mawalabs.de/floggl/docker-php:latest
+FROM docker.mawalabs.de/floggl/docker-php
 
 MAINTAINER Martin Wagner <web@mawalabs.de>
 
