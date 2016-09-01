@@ -1,14 +1,19 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
 stages:
   - build
   - test
   - release
 
 variables: 
-  CONTAINER_TEST_IMAGE: docker.mawalabs.de/floggl/docker-nginx-php:$CI_BUILD_REF_NAME
-  CONTAINER_RELEASE_IMAGE: docker.mawalabs.de/floggl/docker-nginx-php:latest
+  CONTAINER_TEST_IMAGE: registry.gitlab.com/floggl/docker-nginx-php:$CI_BUILD_REF_NAME
+  CONTAINER_RELEASE_IMAGE: registry.gitlab.com/floggl/docker-nginx-php:latest
 
 before_script:
-  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN docker.mawalabs.de
+  - docker login -u floggl-deploy-bot -p $DEPLOY_BOT_PW registry.gitlab.com
 
 build:
   stage: build

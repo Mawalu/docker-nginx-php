@@ -1,4 +1,4 @@
-FROM docker.mawalabs.de/floggl/docker-php
+FROM registry.gitlab.com/floggl/docker-php
 
 MAINTAINER Martin Wagner <web@mawalabs.de>
 
